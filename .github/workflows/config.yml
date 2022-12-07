@@ -13,6 +13,6 @@ jobs:
           NPM_TOKEN: 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
           GH_TOKEN: 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
         run: |
-          npm install -g semantic-release @semantic-release/gitlab @semantic-release/changelog conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/git
+          npm install -g semantic-release @semantic-release/github @semantic-release/changelog conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/git
           semantic-release
         shell: bash
