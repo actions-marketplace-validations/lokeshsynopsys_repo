@@ -59,19 +59,33 @@
     "unzipper": "^0.10.11",
     "uuid": "^8.3.2"
   },
+  "branches": "master",
+  "repositoryUrl": "https://github.com/lokeshsynopsys/repo",
+  "debug": "false",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     [
       "@semantic-release/changelog",
       {
-        "changelogFile": "CHANGELOG.md"
+        "changelogFile": "CHANGELOG.md",
+        "changelogTitle": "# Semantic Versioning Changelog"
       }
     ],
     [
       "@semantic-release/git",
       {
         "assets": ["CHANGELOG.md"]
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "release/**"
+          }
+        ]
       }
     ]
   ]

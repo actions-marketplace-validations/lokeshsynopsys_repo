@@ -1,18 +1,22 @@
 name: CI
-on: push
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+env:
+  NPM_TOKEN: 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
+  GH_TOKEN: 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
 jobs:
-  test:
-    runs-on: [ubuntu-latest]
+  release:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '14.17'
-      - name: Release
-        env:
-          NPM_TOKEN: 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
-          GH_TOKEN: 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
-        run: |
-          npm install -g semantic-release @semantic-release/github @semantic-release/changelog conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/git
-          semantic-release
-        shell: bash
+          node-version: 'lts/*'
+      - name: setup semantic-release
+        run: npm install -g semantic-release @semantic-release/git @semantic-release/changelog -D
+      - name: release
+        run: npx semantic-release
