@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '14.17'
       - name: Release
         env:
           NPM_TOKEN: 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
